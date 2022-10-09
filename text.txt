@@ -1,6 +1,10 @@
-Create a jumbotron with a moment function giving MMMM-Do-YYYY hh:mm:ss;
+// Create a jumbotron with a moment function giving MMMM-Do-YYYY hh:mm:ss; 
 Loop <li> onto page with time- input section - button(save)
 Dynamically change background if pastTime < currentTime
 Dynamically change background if futureTime > currentTime.
 Set localStorage to ensure item is saved. 
-Get localStorage 
+Get localStorage
+
+moment().format('MMMM Do YYYY, h:mm:ss a'); Format for current time. 
+// Need to add to text in jumbotron
+
