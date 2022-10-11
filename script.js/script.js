@@ -1,30 +1,40 @@
+// allows DOM to load before running script
 $(document).ready();
-//variables
-let currentTime = moment().format("MMMM Do YYYY, hh:mm:ss a");
-let hoursToday = [
-  "9am",
-  "10am",
-  "11am",
-  "12pm",
-  "1pm",
-  "2pm",
-  "3pm",
-  "4pm",
-  "5pm",
-];
-//Connected elements
-const timeRows = $(".container");
-const hours = $("#one");
+// Dynamic day clock for header
+$("#currentDay").text(moment().format("MMMM Do YYYY"));
 
-//Dynamic Date Function
-setInterval(function setTime() {
-  currentTime = moment().format("MMMM Do YYYY");
-  $("#currentDay").text(currentTime);
-}, 1000);
+let time = moment().hour();
+$(".saveBtn").on("click", function () {
+  let text = $(this).siblings(".description").val();
+  let time = $(this).parent().attr("id");
+  localStorage.setItem(text, time);
+});
 
-// function appendRows() {
-//     for (let i = 0; i < 5; i++) {
-//       timeRows.append("<p>this is text<p>");
-//     }
-//   }
-//   appendRows();
+$("#9hour .description").val(localStorage.getItem("hour9"));
+$("#10hour .description").val(localStorage.getItem("10hour"));
+$("#11hour .description").val(localStorage.getItem("11hour"));
+$("#12hour .description").val(localStorage.getItem("12hour"));
+$("#13hour .description").val(localStorage.getItem("13hour"));
+$("#14hour .description").val(localStorage.getItem("14hour"));
+$("#15hour .description").val(localStorage.getItem("15hour"));
+$("#16hour .description").val(localStorage.getItem("16hour"));
+$("#17hour .description").val(localStorage.getItem("17hour"));
+
+$(".time-block").each(function () {
+  let timeBlock = parseInt($(this).attr("id").split("hour")[0]);
+  console.log(timeBlock);
+  if (time > timeBlock) {
+    $(".description").addClass("past");
+    $(".description").removeClass("future");
+    $(".description").removeClass("present");
+  } else if (time < timeBlock) {
+    $(".description").removeClass("past");
+    $(".description").addClass("future");
+    $(".description").removeClass("present");
+  } else if (time === timeBlock) {
+    $(".description").removeClass("past");
+    $(".description").removeClass("future");
+    $(".description").addClass("present");
+  }
+  return "error";
+});
