@@ -31,6 +31,9 @@ THEN the saved events persist
 ## Usage
 
 This application allows users to store and reuse their daily events by clicking on the save icon. To use this, type in the event that you want to schedule and save. Once the event passes, the application with update and show that the event has passed. Future events will also be labeled to show which events are up and coming.
+The following animation demonstrates the application functionality:
+
+![A user clicks on slots on the color-coded calendar and edits the events.](./css/05-third-party-apis-homework-demo.gif)
 
 ## Contributing
 
